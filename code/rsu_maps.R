@@ -128,9 +128,10 @@ usT.sf2 <- rucaT.sf2 %>% filter(!STATEFP %in% c("02", "15")) %>%
 
 # Update dataset to include all GEOIDs, coded as rural
 rucaT.sf_all <- rucaT.sf2
-rucaT.sf_all$rurality <- ifelse(rucaT.sf2$GEOID %in% missingList, "Rural", rucaT.sf2$rurality)
+rucaT.sf_all$rurality <- ifelse(is.na(rucaT.sf2$rurality), "Rural", rucaT.sf2$rurality)
 # Check 
 missingAll <- rucaT$tractFIPS[!(rucaT$tractFIPS %in% rucaT.sf_all$GEOID)]
+unique(rucaT.sf_all$rurality)
 
 # Alaska tracts
 alaskaT.sf <- rucaT.sf_all %>% filter(STATEFP == "02") %>%
@@ -162,7 +163,7 @@ hawaiiT_map
 
 tract_map_all <-
   tm_shape(usT.sf_all) +
-  tm_fill(col = "rurality", palette = rural.cols, colorNA = "black",
+  tm_fill(col = "rurality", palette = rural.cols, colorNA = "#c7eae5", showNA = FALSE,
           title = "Classification") +
   tm_shape(states48.sf) +
   tm_borders(alpha = 0.7, lwd = 0.5) +

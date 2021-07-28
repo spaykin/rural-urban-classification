@@ -284,3 +284,54 @@ hawaiiZ_map <-
   tm_shape(hawaii.sf) +
   tm_borders(alpha = 0.7, lwd = 0.5) +
   tm_layout(frame = FALSE, legend.show = FALSE)
+
+#### ZCTA Maps - Urban, Rural, Suburban -----
+
+# Color scheme
+# rural, suburban, urban
+#rural.cols <- c("#c7eae5", "#5ab4ac", "#01665e")
+
+# Rural map
+ruralZ <- usZ.sf %>% filter(rurality == "Rural")
+
+ruralZ_map <- 
+  tm_shape(ruralZ) +
+  tm_fill(col = "rurality", palette = "#c7eae5",
+          title = "") +
+  tm_shape(usZ.sf) + tm_borders(alpha = 0.3, lwd = 0.1) +
+  tm_shape(states48.sf) +
+  tm_borders(alpha = 1, lwd = 0.6) +
+  tm_layout(frame = FALSE,
+            legend.show = FALSE)
+
+tmap_save(ruralZ_map, "figs/ruralZ_map.png")
+
+# Suburban map
+suburbanZ <- usZ.sf %>% filter(rurality == "Suburban") 
+
+suburbanZ_map <- 
+  tm_shape(suburbanZ) +
+  tm_fill(col = "rurality", palette = "#5ab4ac",
+          title = "") +
+  tm_shape(usZ.sf) + tm_borders(alpha = 0.3, lwd = 0.1) +
+  tm_shape(states48.sf) +
+  tm_borders(alpha = 1, lwd = 0.6) +
+  tm_layout(frame = FALSE,
+            legend.show = FALSE)
+
+tmap_save(suburbanZ_map, "figs/suburbanZ_map.png")
+
+# Urban map
+urbanZ <- usZ.sf %>% filter(rurality == "Urban")
+
+urbanZ_map <- 
+  tm_shape(urbanZ) +
+  tm_fill(col = "rurality", palette = "#01665e",
+          title = "") +
+  tm_shape(usZ.sf) + tm_borders(alpha = 0.3, lwd = 0.1) +
+  tm_shape(states48.sf) +
+  tm_borders(alpha = 1, lwd = 0.6) +
+  tm_layout(frame = FALSE,
+            legend.show = FALSE)
+
+tmap_save(urbanZ_map, "figs/urbanZ_map.png")

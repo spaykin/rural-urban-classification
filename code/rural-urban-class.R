@@ -1,6 +1,6 @@
 #### About ----- 
 
-# This script will generate Census tract- and ZCTA-level urban/suburban/rural classification, based on the USDA & University of Washington RUCA Codes. 
+# This script generates Census tract- and ZCTA-level rural/suburban/urban classification, based on the USDA & University of Washington RUCA Codes. 
 # It also generates county-level percent rurality metrics.
 # Based on original script developed by Moksha Menghaney for the Opioid Environment Policy Scan, October 2020. 
 
@@ -20,7 +20,7 @@ urban <- c(1.0, 1.1)
 suburban <- c(2.0, 2.1, 4.0, 4.1)
 # everything else rural
 
-### TRACT LEVEL ----
+### Census tracts ----
 
 rucaTract <- openxlsx::read.xlsx(paste0('data_raw/RUCA2010revisedTract.xlsx'), 
                                  sheet = 1, startRow = 2, colNames = TRUE)
@@ -39,7 +39,7 @@ write.csv(rucaTract %>%
                    RUCA2 = as.character(RUCA2)),
           paste0("data_final/UrbanSubRural_T.csv"), row.names = FALSE)
 
-#### ZCTA LEVEL ----
+#### ZCTAs ----
 
 rucaZipcode <- openxlsx::read.xlsx(paste0('data_raw/RUCA2010zipcode.xlsx'), 
                          sheet = 2, colNames = TRUE)
@@ -57,7 +57,7 @@ rucaZipcode <- rucaZipcode %>%
 write.csv(rucaZipcode,paste0("data_final/UrbanSubRural_Z.csv"),
           row.names = FALSE)
 
-### COUNTY LEVEL - Percentage of Tracts ----
+### Counties - Percentage of Tracts ----
 
 # Calculate percentage of Census tracts in county as rural, urban, suburban
 rucaCountyRurality <- rucaTract %>% 

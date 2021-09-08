@@ -1,6 +1,6 @@
 #### About ----
 
-# This code prepares data for mapping Census tracts and ZCTAs by their RUCA code classification. 
+# This code prepares data and generates maps for Census tracts and ZCTAs by their RUCA code classification. 
 
 #### Set up ----
 
@@ -63,8 +63,6 @@ hawaiiT.sf <- rucaT.sf %>% filter(STATEFP == "15") %>%
 usT.sf <- rucaT.sf %>% filter(!STATEFP %in% c("02", "15")) %>%
   st_transform(crs)
 
-# Tract Map
-
 # Color scheme
 # rural, suburban, urban
 rural.cols <- c("#c7eae5", "#5ab4ac", "#01665e")
@@ -79,29 +77,14 @@ tract_map2 <-
   tm_layout(frame = FALSE, main.title = "Census Tracts by Rural, Suburban, Urban Classification")
 tmap_save(tract_map_missing, "figs/tract_map_missing.png")
 
-# Identify missing tracts in SD and other states
-# SD has 222 census tracts
-sd <- tracts.sf %>% filter(STATEFP == "46") #222
-sd_r <- rucaT %>% filter(str_detect(tractFIPS, "^46")) #222
-sd_r2 <- rucaT.sf %>% filter(str_detect(GEOID, "^46")) #219
-sd_r3 <- usT.sf %>% filter(str_detect(GEOID, "^46")) #219
-
-# What is in orig rucaT, but missing from the sf merge?
-missing <- data.frame(rucaT$tractFIPS[!(rucaT$tractFIPS %in% rucaT.sf$GEOID)])
-missingList <- rucaT$tractFIPS[!(rucaT$tractFIPS %in% rucaT.sf$GEOID)]
-missingSD <- missing %>% filter(str_detect(rucaT.tractFIPS...rucaT.tractFIPS..in..rucaT.sf.GEOID.., "^46"))
-
 # Redo sf merge, but keep all variables in rucaT 
 rucaT.sf2 <- merge(tracts.sf, rucaT, by.x = "GEOID", by.y = "tractFIPS", all = TRUE)
 usT.sf2 <- rucaT.sf2 %>% filter(!STATEFP %in% c("02", "15")) %>%
   st_transform(crs)
 
-# Update dataset to include all GEOIDs, coded as rural
+# Update dataset to include all GEOIDs
 rucaT.sf_all <- rucaT.sf2
 rucaT.sf_all$rurality <- ifelse(is.na(rucaT.sf2$rurality), "Rural", rucaT.sf2$rurality)
-# Check 
-missingAll <- rucaT$tractFIPS[!(rucaT$tractFIPS %in% rucaT.sf_all$GEOID)]
-unique(rucaT.sf_all$rurality)
 
 # New tract datasets - use these
 
@@ -157,21 +140,8 @@ tract_map_all_nolegend <-
 
 tmap_save(tract_map_all_nolegend, "figs/tract_map_nolegend.png")
 
-# Legend only
-tract_map_all_onlylegend <-
-  tm_shape(usT.sf_all) +
-  tm_fill(col = "rurality", palette = rural.cols, colorNA = "#c7eae5", showNA = FALSE,
-          title = "Classification") +
-  tm_shape(states48.sf) +
-  tm_borders(alpha = 0.7, lwd = 0.5) +
-  tm_layout(frame = FALSE, legend.only = TRUE,
-            legend.title.size = 1.5,
-            legend.text.size = 1)
 
-tmap_save(tract_map_all_onlylegend, "figs/tract_map_legendonly.png")
-
-
-#### Tract Maps - Urban, Rural, Suburban -----
+#### Disaggregated Tract Maps - Urban, Rural, Suburban -----
 
 # Color scheme
 # rural, suburban, urban
@@ -285,7 +255,7 @@ hawaiiZ_map <-
   tm_borders(alpha = 0.7, lwd = 0.5) +
   tm_layout(frame = FALSE, legend.show = FALSE)
 
-#### ZCTA Maps - Urban, Rural, Suburban -----
+#### Disaggregated ZCTA Maps - Urban, Rural, Suburban -----
 
 # Color scheme
 # rural, suburban, urban

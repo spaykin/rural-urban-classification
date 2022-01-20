@@ -196,7 +196,7 @@ tmap_save(urban_map, "figs/urban_map.png")
 #### ZCTA Maps ----
 
 # Load data
-rucaZ <- read.csv("data_final/UrbanSubRural_Z.csv")
+rucaZ <- read.csv("data_final/RuralSubUrban_Z.csv")
 rucaZ$ZIP_CODE <- sprintf("%05s", as.character(rucaZ$ZIP_CODE))
 
 # Merge with geometry

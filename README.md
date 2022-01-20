@@ -3,7 +3,7 @@
 ## About
 This repository includes the data, methods and code used in developing the classification scheme for Census tracts and zip codes as rural, urban, or suburban, based on USDA RUCA Codes. 
 
-For more information, please read our [Research Brief](https://docs.google.com/document/d/1wwNT77aKOz-v-l6sYpEuEqoAvrXFDqdZq4VYwXJnUMA/edit#heading=h.mbjsiz6n6jlo) [draft].
+For more information, please review our working draft of our [Research Brief](https://www.researchgate.net/publication/354451057_Rural_Suburban_Urban_Classification_for_Small_Area_Analysis). 
 
 | Census Tracts | Zip Codes |
 |:------------------ | :------------- |
@@ -13,8 +13,10 @@ For more information, please read our [Research Brief](https://docs.google.com/d
 ## Folder structure
 
 **data_final**:
-* RuralSubUrban_T.csv: Census tract rural/suburban/urban classification data
+* RuralSubUrban_T.csv: Census tract rural/suburban/urban classification data (csv format)
+* RuralSubUrban_T_Shapefile.zip: Zip file containing 4 files comprising shapefile with Census tract classification
 * RuralSubUrban_Z.csv: Zip code rural/suburban/urban classification data
+* RuralSubUrban_Z_Shapefile.zip: Zip file containing 4 files comprising shapefile with ZCTA classification
 
 | Variable | Description |
 |:------------------ | :------------- |
@@ -47,8 +49,8 @@ This dataset reports the percentage of Census tract in each county classified as
 
 ## Acknowledgements
 
-Susan Paykin (co), Moksha Menghaney (co), Marynia Kolak, and Qinyun Lin (2021). Research Brief: Rural, Suburban, Urban Classification for Small-Area Analysis. Healthy Regions & Policies Lab, Center for Spatial Data Science, University of Chicago. 
+Susan Paykin (co), Moksha Menghaney (co), Qinyun Lin, and Marynia Kolak (2021). Research Brief: Rural, Suburban, Urban Classification for Small-Area Analysis. Healthy Regions & Policies Lab, Center for Spatial Data Science, University of Chicago. 
 
-The authors gratefully acknowledge the contributions of Luc Anselin, PhD and Julia Koschinsky, PhD of the Center for Spatial Data Science, University of Chicago.
+The authors gratefully acknowledge the contributions of Luc Anselin and Julia Koschinsky of the Center for Spatial Data Science, University of Chicago.
 
 *This research was supported in part by the Robert Wood Johnson Foundation (RWJF). It was also supported by the National Institute on Drug Abuse, National Institutes of Health, through the NIH HEAL Initiative under award number UG3DA123456. The contents of this publication are solely the responsibility of the authors and do not necessarily represent the official views of the NIH, the Initiative, or the participating sites.*

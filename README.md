@@ -47,9 +47,13 @@ This dataset reports the percentage of Census tract in each county classified as
 * Script that generates Census tract- and ZCTA-level rural/suburban/urban classification, based on the USDA & University of Washington RUCA codes. Also generates county-level percent rurality metrics.
 
 
-## Acknowledgements
+## Citation
 
-Susan Paykin (co), Moksha Menghaney (co), Qinyun Lin, and Marynia Kolak (2021). Research Brief: Rural, Suburban, Urban Classification for Small-Area Analysis. Healthy Regions & Policies Lab, Center for Spatial Data Science, University of Chicago. 
+[![DOI](https://zenodo.org/badge/390058293.svg)](https://zenodo.org/badge/latestdoi/390058293)
+
+Susan Paykin (co), Moksha Menghaney (co), Qinyun Lin, and Marynia Kolak (2021). Rural, Suburban, Urban Classification for Small-Area Analysis. Healthy Regions & Policies Lab, Center for Spatial Data Science, University of Chicago. 
+
+## Acknowledgements
 
 The authors gratefully acknowledge the contributions of Luc Anselin and Julia Koschinsky of the Center for Spatial Data Science, University of Chicago.
 

@@ -7,8 +7,7 @@ For more information, please review our working draft of our [Research Brief](ht
 
 | Census Tracts | Zip Codes |
 |:------------------ | :------------- |
-![image](https://user-images.githubusercontent.com/49726781/132532713-db437f9f-bcb1-49a4-9665-9fed8a85a0bd.png) | ![image](https://user-images.githubusercontent.com/49726781/132532759-81d64a81-4ac6-423b-a9b9-6e2e3f93a061.png) |
-
+| <img src = "https://github.com/spaykin/rural-urban-classification/blob/main/figs/u_r_s%20tracts%20clean.jpeg" width="700"> | <img src = "https://github.com/spaykin/rural-urban-classification/blob/main/figs/u_r_s%20zips%20clean.jpeg" width="700"> |
 
 ## Folder structure
 
